@@ -113,9 +113,11 @@ Advancing issues outnumbered decliners by a 1.12-to-1 ratio on the NYSE and by a
 The S&P index recorded 14 new 52-week highs and three new lows, while the Nasdaq recorded 49 new highs and 38 new lows.
 '''
 doc = nlp(text)
-for ent in doc.ents:
-    print(ent.text, ent.label_)
-
+colors = [{"STOCK": "linear-gradient(90deg, #aa9cfc, #fc9ce7)",
+           "INDEX": "linear-gradient(90deg, #aa9cfc, #fc9ce7)", }]
+options = {"ents": ["STOCK", "INDEX",
+                    "STOCK_EXCHANGE", "COMPANY"], "colors": colors}
+displacy.serve(doc, style="ent", options=options)
 '''
 # Using regex inside of spaCy.
 text = "Paul Newman was an American actor, but Paul Hollywood is a British TV Host. The name Paul is quite common."
